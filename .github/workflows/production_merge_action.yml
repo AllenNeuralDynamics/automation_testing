@@ -1,5 +1,5 @@
 name: production-merge-action
-run-name: Production Merge 
+run-name: create production merge 
 on: workflow_dispatch
 #on:
 #    schedule:
@@ -19,11 +19,7 @@ jobs:
             - run: echo $date
             - run: echo "testing string ${{ env.date }}"
             - name: create pull request
-              run: gh pr create -B production_testing -H develop --title "[Production Merge] ${{ env.date }}" --body 'Created by Github Actions' --assignee alexpiet --reviewer alexpiet
+              run: gh pr create -B production_testing -H develop --title "[production merge] ${{ env.date }}" --body 'Created by Github Actions' --assignee alexpiet --reviewer alexpiet hanhou
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#            - name: merge pull request
-#              run: gh pr merge develop --admin --merge
-#              env:
-#                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
