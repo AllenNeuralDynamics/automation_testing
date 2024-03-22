@@ -22,7 +22,9 @@ jobs:
               run: p=$(gh pr create -B production_testing -H develop --title "[Production Merge] ${{ env.date }}" --body 'Created by Github Actions') >> "$GITHUB_ENV"
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - run: echo "PR: ${{ env.p }}"
             - name: merge pull request
               run: gh pr merge ${{ env.p }} --admin
-    
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
