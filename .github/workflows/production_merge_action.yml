@@ -1,7 +1,7 @@
 name: production_merge_action
 on:
     schedule:
-    - cron: '/2 * * * *'
+    - cron: '*/2 * * * *'
 jobs:
     Explore-GitHub-Actions:
         runs-on: ubuntu-latest
