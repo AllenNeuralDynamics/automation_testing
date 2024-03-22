@@ -1,11 +1,13 @@
 name: production-merge-action
-run-name: ${{ github.actor }} is testing out Github Actions
+run-name: Production Merge 
 on:
     schedule:
-    - cron: '*/15 * * * *'
+    - cron: '0 * * * *'
 jobs:
-    Explore-GitHub-Actions:
+    create-production-merge:
         runs-on: ubuntu-latest
         steps:
+            - name: create pull request
+              run: gh pr create -B production_testing -H develop --title '[Production Merge]' --body 'Created by Github Actions'
             - run: echo "The job was auto triggered by a schedule"
 
