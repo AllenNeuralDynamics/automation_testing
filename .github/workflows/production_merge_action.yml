@@ -2,12 +2,16 @@ name: production-merge-action
 run-name: Production Merge 
 on:
     schedule:
-    - cron: '35 * * * *'
+    - cron: '48 * * * *'
 jobs:
     create-production-merge:
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
             - name: create pull request
+              run: 
               run: gh pr create -B production_testing -H develop --title '[Production Merge]' --body 'Created by Github Actions'
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
