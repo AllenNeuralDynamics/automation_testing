@@ -24,9 +24,9 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - run: echo $date
-            - run: echo ${{ steps.pr.outputs.* }} 
+            - run: echo ${{ steps.pr.outputs.p }} 
             - name: merge pull request
-              run: gh pr merge develop --admin
+              run: gh pr merge develop --admin --merge
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
