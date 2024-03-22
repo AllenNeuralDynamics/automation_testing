@@ -12,8 +12,12 @@ jobs:
               uses: actions/checkout@v4
               with:
                 fetch-depth: 0
+            - name: get current date
+              id: date
+              run: |
+                echo "{date}={$(date + '%Y-%m-%d')}" >> $GITHUB_STATE
             - name: create pull request
-              run: gh pr create -B production_testing -H develop --title '[Production Merge]' --body 'Created by Github Actions'
+              run: gh pr create -B production_testing -H develop --title '[Production Merge] ${{ env.date }}' --body 'Created by Github Actions'
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - run: echo "The job was auto triggered by a schedule"
