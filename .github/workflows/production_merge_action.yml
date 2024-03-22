@@ -19,12 +19,14 @@ jobs:
             - run: echo $date
             - run: echo "testing string ${{ env.date }}"
             - name: create pull request
-              run: p=$(gh pr create -B production_testing -H develop --title "[Production Merge] ${{ env.date }}" --body 'Created by Github Actions') >> "$GITHUB_ENV"
+              id: pr
+              run: p=$(gh pr create -B production_testing -H develop --title "[Production Merge] ${{ env.date }}" --body 'Created by Github Actions') >> $GITHUB_OUTPUT
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - run: echo $date
+            - run: echo ${{ steps.pr.outputs.* }} 
             - name: merge pull request
-              run: gh pr merge production_testing --admin
+              run: gh pr merge develop --admin
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
