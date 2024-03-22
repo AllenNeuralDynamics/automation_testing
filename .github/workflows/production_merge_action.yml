@@ -2,12 +2,14 @@ name: production-merge-action
 run-name: Production Merge 
 on:
     schedule:
-    - cron: '0 * * * *'
+    - cron: '35 * * * *'
 jobs:
     create-production-merge:
         runs-on: ubuntu-latest
         steps:
             - name: create pull request
               run: gh pr create -B production_testing -H develop --title '[Production Merge]' --body 'Created by Github Actions'
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - run: echo "The job was auto triggered by a schedule"
 
