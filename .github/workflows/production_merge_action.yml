@@ -1,0 +1,13 @@
+name: production_merge_action
+on:
+    schedule:
+    - cron: '*/2 * * * *'
+jobs:
+    Explore-GitHub-Actions:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "The job was auto triggered by a ${{ github.event_name }} event"
+    create_pull_request:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Just checking things out"
