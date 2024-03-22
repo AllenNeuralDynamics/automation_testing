@@ -10,9 +10,9 @@ jobs:
             - run: echo "branch ${{ github.ref }}"
             - run: echo "repo ${{ github.repository }}"
             - name: Check out repository code
-                uses: actions/checkout@v4
+              uses: actions/checkout@v4
             - run: echo "The ${{ github.repository }} has been cloned to the runneR"
             - name: List files in the repository
-                run: |
-                    ls ${{ github.workspace }}
+              run: |
+                ls ${{ github.workspace }}
             - run: echo "job status ${{ job.status }}"
