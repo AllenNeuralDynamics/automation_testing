@@ -13,7 +13,6 @@ jobs:
               with:
                 fetch-depth: 0
             - name: create pull request
-              run: 
               run: gh pr create -B production_testing -H develop --title '[Production Merge]' --body 'Created by Github Actions'
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
