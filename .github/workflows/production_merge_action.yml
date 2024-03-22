@@ -1,4 +1,5 @@
-name: production_merge_action
+name: production-merge-action
+run-name: ${{ github.actor }} is testing out Github Actions
 on:
     schedule:
     - cron: '*/2 * * * *'
@@ -6,8 +7,5 @@ jobs:
     Explore-GitHub-Actions:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "The job was auto triggered by a ${{ github.event_name }} event"
-    create_pull_request:
-        runs-on: ubuntu-latest
-        steps:
-            - run: echo "Just checking things out"
+            - run: echo "The job was auto triggered by a schedule"
+
