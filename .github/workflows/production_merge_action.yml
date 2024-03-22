@@ -18,7 +18,7 @@ jobs:
                 echo "{date}={$(date +'%Y-%m-%d')}" >> "$GITHUB_ENV"
             - run: echo "$date"
             - name: create pull request
-              run: gh pr create -B production_testing -H develop --title '[Production Merge] ${{ date }}' --body 'Created by Github Actions'
+              run: gh pr create -B production_testing -H develop --title "[Production Merge] ${env:date}" --body 'Created by Github Actions'
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - run: echo "The job was auto triggered by a schedule"
